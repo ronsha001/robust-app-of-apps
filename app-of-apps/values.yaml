@@ -21,6 +21,6 @@ argocdApplications:
   my-nginx-app:
     disableAutomated: false
     disable: false
-    name: nginx-11
+    name: my-nginx-app
     namespace: nginx-1
     # targetRevision: HEAD

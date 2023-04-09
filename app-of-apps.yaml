@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/ronsha001/robust-app-of-apps.git
     targetRevision: HEAD
-    path: charts
+    path: app-of-apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
