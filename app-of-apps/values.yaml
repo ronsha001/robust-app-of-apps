@@ -30,3 +30,9 @@ argocdApplications:
       namespace: nginx-2
       wave: 2
       # targetRevision: HEAD
+
+apps:
+  folder-1:
+    name: app1
+  folder-2:
+    name: app2
