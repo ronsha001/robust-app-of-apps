@@ -21,6 +21,13 @@ argocdApplications:
       namespace: lyrics
       wave: 1
       # targetRevision: HEAD
+    my-nginx-app:
+      disableAutomated: false
+      disableFinalizer: false
+      disable: false
+      name: my-nginx-app
+      namespace: nginx-1
+      wave: 2
   folder-2:
     my-nginx-app:
       disableAutomated: false
