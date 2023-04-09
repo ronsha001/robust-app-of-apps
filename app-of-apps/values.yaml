@@ -14,12 +14,14 @@ global:
 argocdApplications:
   lyrics:
     disableAutomated: false
+    disableFinalizer: false
     disable: false
     name: lyrics
     namespace: lyrics
     # targetRevision: HEAD
   my-nginx-app:
     disableAutomated: false
+    disableFinalizer: false
     disable: false
     name: my-nginx-app
     namespace: nginx-2
