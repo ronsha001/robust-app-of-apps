@@ -9,6 +9,8 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   {{- end }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "{{ .wave }}"
 spec:
   project: {{ $.Values.global.spec.project }}
   source:

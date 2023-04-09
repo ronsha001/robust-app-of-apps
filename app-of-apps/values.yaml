@@ -18,11 +18,13 @@ argocdApplications:
     disable: false
     name: lyrics
     namespace: lyrics
+    wave: 1
     # targetRevision: HEAD
   my-nginx-app:
     disableAutomated: false
-    disableFinalizer: true
+    disableFinalizer: false
     disable: false
     name: my-nginx-app
     namespace: nginx-2
+    wave: 2
     # targetRevision: HEAD
