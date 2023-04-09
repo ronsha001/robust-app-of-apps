@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "lyrics.fullname" . }}-app
+  namespace: {{ .Values.lyrics.namespace }}
+  labels:
+    app: {{ include "lyrics.fullname" . }}-app
+spec:
+  replicas: {{ .Values.lyrics.replicas }}
+  selector:
+    matchLabels:
+      app: {{ include "lyrics.fullname" . }}-app
+  template:
+    metadata:
+      labels:
+        app: {{ include "lyrics.fullname" . }}-app
+    spec:
+      initContainers:
+      - name: redis-health-check
+        image: redis
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - secretRef:
+            name: {{ .Release.Name }}-redis
+        command: ['sh', '-c', "until redis-cli -h {{ .Release.Name }}-redis-master -p 6379 ping; do echo waiting for redis-service; sleep 2; done;"]
+        command: ['redis-cli', '-h', "{{ .Release.Name }}-redis-master", '-p', '6379', '-a', $(redis-password), 'set', 'healthcheck', '"this is an healthcheck"']
+      containers:
+      - image: "{{ .Values.lyrics.image.name }}:{{ .Values.lyrics.image.tag }}"
+        name: lyrics
+        imagePullPolicy: {{ .Values.lyrics.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.lyrics.port }}
+        envFrom:
+        - secretRef:
+            name: {{ .Release.Name }}-redis
+        env:
+        - name: REDIS_DNS
+          value: {{ .Release.Name }}-redis-master
+        - name: REDIS_PASSWORD
+          value: $(redis-password)
+        resources:
+          requests:
+            memory: {{ .Values.lyrics.resources.requests.memory }}
+            cpu: {{ .Values.lyrics.resources.requests.cpu }}
+          limits:
+            memory: {{ .Values.lyrics.resources.limits.memory }}
+            cpu: {{ .Values.lyrics.resources.limits.cpu }}

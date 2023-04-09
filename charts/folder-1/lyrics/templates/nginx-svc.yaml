@@ -1,0 +1,15 @@
+{{- if .Values.lyrics.nginx.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "lyrics.fullname" . }}-nginx
+spec:
+  selector:
+    app: {{ include "lyrics.fullname" . }}-nginx
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: {{ .Values.lyrics.nginx.port }}
+      targetPort: {{ .Values.lyrics.nginx.port }}
+      nodePort: 30000
+{{- end }}

@@ -1,0 +1,14 @@
+{{- if .Values.lyrics.nginx.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-static
+  namespace: {{ .Values.lyrics.namespace }}
+data:
+  index.js: |-
+{{ .Files.Get "index.js" | indent 4 }}
+  index.html: |-
+{{ .Files.Get "index.html" | indent 4 }}
+  main.css: |-
+{{ .Files.Get "main.css" | indent 4 }}
+{{- end }} 

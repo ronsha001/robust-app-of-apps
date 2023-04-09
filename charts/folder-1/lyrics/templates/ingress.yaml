@@ -1,0 +1,33 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "lyrics.fullname" . }}-ingress
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "lyrics.labels" . | nindent 4 }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      {{- if .Values.lyrics.nginx.enabled }}
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: {{ include "lyrics.fullname" . }}-nginx
+            port: 
+              number: {{ .Values.lyrics.nginx.port }}
+      {{- else }}
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: {{ .Release.Name }}-app
+            port: 
+              number: {{ .Values.lyrics.port }}
+      {{- end}}
+{{- end }}

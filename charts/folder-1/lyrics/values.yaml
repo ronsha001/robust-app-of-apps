@@ -1,0 +1,31 @@
+lyrics:
+  namespace: lyrics
+  replicas: 2
+  port: 8000
+  image:
+    name: 651569844/lyrics
+    tag: 1.2.2
+    pullPolicy: Always
+  resources:
+    requests:
+      memory: 250Mi
+      cpu: 250m
+    limits:
+      memory: 500Mi
+      cpu: 500m
+  nginx:
+    enabled: true
+    port: 80
+    replicas: 2
+ingress:
+  enabled: true
+  host: lyrics
+
+
+redis:
+  master:
+    persistence:
+      size: 1Gi
+  replica:
+    persistence:
+      size: 1Gi
