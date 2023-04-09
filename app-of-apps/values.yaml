@@ -25,7 +25,7 @@ argocdApplications:
       disableAutomated: false
       disableFinalizer: false
       disable: false
-      name: my-nginx-app
+      name: my-nginx-app-1
       namespace: nginx-1
       wave: 2
   folder-2:
@@ -33,7 +33,7 @@ argocdApplications:
       disableAutomated: false
       disableFinalizer: false
       disable: false
-      name: my-nginx-app
+      name: my-nginx-app-2
       namespace: nginx-2
       wave: 2
       # targetRevision: HEAD
