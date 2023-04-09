@@ -1,4 +1,5 @@
 {{- range $app := .Values.argocdApplications -}}
+{{- range $folder := $app -}}
 {{ if not .disable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -16,7 +17,7 @@ spec:
   source:
     repoURL:  {{ $.Values.global.spec.source.repoURL }}
     targetRevision: {{ default $.Values.global.spec.source.targetRevision .targetRevision }}
-    path: charts/{{ .name }}
+    path: charts/{$folder}/*
     {{- if default $.Values.global.helmDefault .helm }}
     helm:
       valueFiles:
