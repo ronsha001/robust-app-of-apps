@@ -11,7 +11,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/ronsha001/Lyrics-Chart.git
+    repoURL: https://github.com/ronsha001/robust-app-of-apps.git
     targetRevision: HEAD
     path: my-nginx-app
   destination:
