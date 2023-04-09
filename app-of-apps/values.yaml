@@ -21,7 +21,7 @@ argocdApplications:
     # targetRevision: HEAD
   my-nginx-app:
     disableAutomated: false
-    disableFinalizer: false
+    disableFinalizer: true
     disable: false
     name: my-nginx-app
     namespace: nginx-2
