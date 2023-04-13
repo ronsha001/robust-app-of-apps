@@ -32,6 +32,7 @@ argocdApplications:
       wave: 2
       annotations:
         argocd.argoproj.io/sync-options: ServerSideApply=true
+      # targetRevision: HEAD
   folder-2:
     my-nginx-app:
       disableAutomated: false
@@ -40,6 +41,4 @@ argocdApplications:
       name: my-nginx-app-2
       namespace: nginx-2
       wave: 2
-      annotations:
-        argocd.argoproj.io/sync-options: ServerSideApply=true
       # targetRevision: HEAD

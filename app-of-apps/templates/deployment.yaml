@@ -12,8 +12,9 @@ metadata:
   {{- end }}
   annotations:
     argocd.argoproj.io/sync-wave: "{{ .wave }}"
+    {{- if and .annotations (gt (len .annotations) 0) }}
     {{ toYaml .annotations | nindent 4 }}
-
+    {{- end }}
 spec:
   project: {{ $.Values.global.spec.project }}
   source:
