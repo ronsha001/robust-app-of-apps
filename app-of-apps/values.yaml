@@ -24,6 +24,7 @@ argocdApplications:
         argocd-image-updater.argoproj.io/image-list: 651569844/lyrics:~1
         argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
         argocd-image-updater.argoproj.io/git-branch: master
+        argocd-image-updater.argoproj.io/alias.force-update: "true"
       # targetRevision: HEAD
   folder-2:
     my-nginx-app:
