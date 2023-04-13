@@ -21,7 +21,7 @@ argocdApplications:
       namespace: lyrics
       wave: 1
       annotations:
-        argocd-image-updater.argoproj.io/image-list: 651569844/lyrics:~1
+        argocd-image-updater.argoproj.io/image-list: 651569844/lyrics:~1.2
         argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
         argocd-image-updater.argoproj.io/git-branch: master
       # targetRevision: HEAD
