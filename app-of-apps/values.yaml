@@ -20,6 +20,8 @@ argocdApplications:
       name: lyrics
       namespace: lyrics
       wave: 1
+      annotations:
+        argocd.argoproj,io/sync-options: ServerSideApply=true
       # targetRevision: HEAD
     my-nginx-app:
       disableAutomated: false
@@ -28,6 +30,8 @@ argocdApplications:
       name: my-nginx-app-1
       namespace: nginx-1
       wave: 2
+      annotations:
+        argocd.argoproj,io/sync-options: ServerSideApply=true
   folder-2:
     my-nginx-app:
       disableAutomated: false
@@ -36,4 +40,6 @@ argocdApplications:
       name: my-nginx-app-2
       namespace: nginx-2
       wave: 2
+      annotations:
+        argocd.argoproj,io/sync-options: ServerSideApply=true
       # targetRevision: HEAD

@@ -12,6 +12,7 @@ metadata:
   {{- end }}
   annotations:
     argocd.argoproj.io/sync-wave: "{{ .wave }}"
+    {{ .annotations }}
 spec:
   project: {{ $.Values.global.spec.project }}
   source:
