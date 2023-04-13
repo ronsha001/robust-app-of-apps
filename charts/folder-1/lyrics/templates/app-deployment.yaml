@@ -25,7 +25,7 @@ spec:
         command: ['sh', '-c', "until redis-cli -h {{ .Release.Name }}-redis-master -p 6379 ping; do echo waiting for redis-service; sleep 2; done;"]
         command: ['redis-cli', '-h', "{{ .Release.Name }}-redis-master", '-p', '6379', '-a', $(redis-password), 'set', 'healthcheck', '"this is an healthcheck"']
       containers:
-      - image: "{{ .Values.lyrics.image.name }}:{{ .Values.lyrics.image.tag }}"
+      - image: {{ .Values.lyrics.image.name }}:{{ .Values.lyrics.image.tag }}
         name: lyrics
         imagePullPolicy: {{ .Values.lyrics.image.pullPolicy }}
         ports:
