@@ -4,7 +4,7 @@ lyrics:
   port: 8000
   image:
     name: 651569844/lyrics
-    tag: 1.2.2
+    tag: 1.1.1
     pullPolicy: Always
   resources:
     requests:
